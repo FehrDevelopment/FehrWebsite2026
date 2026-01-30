@@ -18,8 +18,9 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-app.post("/send", async (req, res) => {
-    const { name, email, business, message } = req.body;
+app.post("/contact", async (req, res) => {
+    console.log( "received:", req.body);
+    res.json({ success: true }); // Temporary response for testing
 
     const mailOptions = {
         from: email,
