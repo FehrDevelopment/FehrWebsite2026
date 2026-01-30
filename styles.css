@@ -4,7 +4,7 @@
   --accent: #4f8cff;
   --accent-soft: #1f2b45;
   --text: #f1ecec;
-  --muted: #a0a4b8;
+  
   --card-bg: #111522;
   --radius: 10px;
 }
@@ -20,6 +20,7 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background: radial-gradient(circle at top, #151a2b, #05060a);
   color: var(--text);
+  overflow-x: hidden;
 }
 
 .container {
@@ -126,48 +127,51 @@ body {
 }
 
 .section {
-  padding: 3.5rem 0;
+  padding: 2rem 0;
 }
 
 #services {
-  background: #1C2F2D; /* deep forest tone */
-  color: #F2F5F7;       /* soft snow white */
+  background: #ffffff; /* deep forest tone */
+  color: #00090e;
+   filter: drop-shadow(0 0 10px rgba(1, 9, 5, 0.679));       /* soft snow white */
+   
 }
 
 #services .card {
-  background: #3A4A4F; /* mountain shadow tone */
+ background: linear-gradient(to right, #b6bfe1, #d9d9e3); /* mountain shadow tone */
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 #services .price {
-  color: #7ECBD2; /* lake turquoise accent */
+  color: #000000; /* lake turquoise accent */
 }
 
 .section-intro {
-  color: #A9C7D8; /* misty sky blue */
+  color: #4212f0; /* misty sky blue */
 }
 #portfolio {
-  background: #E9EFF0; /* glacier grey */
-  color: #2F3A3C;      /* slate charcoal */
+  background: #f4f8f9; /* glacier grey */
+  color: #2F3A3C; 
+    filter: drop-shadow(0 0 10px rgba(1, 10, 20, 0.679));
 }
 
 #portfolio .card {
-  background: #FFFFFF; /* clean white card for contrast */
+background: linear-gradient(to right, #b6bfe1, #d9d9e3); /* clean white card for contrast */
   border: 1px solid #A9C7D8; /* misty blue border */
-  color: #4A5557; /* soft text */
+  color: #010d0f; /* soft text */
 }
 
 #portfolio .card h3 {
-  color: #1C2F2D; /* deep forest teal */
+  color: #000404; /* deep forest teal */
 }
 
 #portfolio .tech {
-  color: #7ECBD2; /* turquoise highlight */
-  font-weight: 600;
+  color: #000000; /* turquoise highlight */
+  font-weight: 500;
 }
 
 .section-intro {
-  color: #4A5557;
+  color: #4a574b;
 }
 
 
@@ -177,7 +181,7 @@ body {
 }
 
 .section h2 {
-  font-size: 1.8rem;
+  font-size: 3rem;
   margin-bottom: 0.5rem;
 }
 
@@ -229,11 +233,11 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
 .hero {
-  background: url('images/mountain.jpeg') center/cover no-repeat;
+  background: url('images/background\ pic\ 3jpg.jpg') center/cover no-repeat;
   color: rgba(240, 242, 245, 0.973);
 }
 .hero p {
-  color: rgba(5, 5, 5, 0.87);
+  color: rgba(245, 239, 239, 0.87);
 }
 .logo {
   display: flex;
@@ -242,8 +246,9 @@ body {
 }
 
 .logo-img {
-  height: 32px;
+  height: 50px;
   width: auto;
+
 }
 
 
@@ -296,17 +301,23 @@ textarea:focus {
   
 }
 
+
 /* Responsive */
 @media (max-width: 800px) {
   .hero-inner,
   .about-grid {
     grid-template-columns: 1fr;
   }
-
+  .cards-grid,
+  .portfolio-grid,
+  .about-grid,
+  .hero-inner {
+    grid-template-columns: 1fr;
+  }
+}
   .main-nav a {
     margin-left: 0.75rem;
   }
-}
 
 @media (max-width: 600px) {
   .header-inner {
@@ -314,6 +325,7 @@ textarea:focus {
     align-items: flex-start;
     gap: 0.5rem;
   }
+  
 
   .hero {
     padding-top: 3rem;
@@ -321,5 +333,32 @@ textarea:focus {
 
   .hero h1 {
     font-size: 2rem;
-  }
+    line-height: 1.2;  
 }
+.btn {
+    width: 100%;
+    text-align: center;
+  }
+.hero-actions {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .main-nav {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .main-nav a {
+    padding: 0.5rem 0.75rem;
+  }
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+  }
+  .contact-form input,
+  .contact-form textarea {
+    width:100%;
+  }
+
+}
+
+
