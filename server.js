@@ -21,7 +21,7 @@ const transporter = nodemailer.createTransport({
 app.post("/contact", async (req, res) => {
     const { name, email, business, message } = req.body;
 
-    console.log("Received:", req.body);
+    console.log("received:", req.body);
 
     const mailOptions = {
         from: email,
@@ -45,4 +45,4 @@ ${message}
     }
 });
 
-app.listen(3000, () => console.log("Server running on port 3000"));
+
