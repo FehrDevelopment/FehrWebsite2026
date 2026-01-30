@@ -4,10 +4,10 @@ const cors = require("cors");
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+
 app.use(cors({
-    origin: "http://fehrdevelopment.com"
-}));    
+    origin: "https://fehrdevelopment.com"
+}));
 
 // Gmail transporter
 const transporter = nodemailer.createTransport({
@@ -19,8 +19,9 @@ const transporter = nodemailer.createTransport({
 });
 
 app.post("/contact", async (req, res) => {
-    console.log( "received:", req.body);
-    res.json({ success: true }); // Temporary response for testing
+    const { name, email, business, message } = req.body;
+
+    console.log("Received:", req.body);
 
     const mailOptions = {
         from: email,
