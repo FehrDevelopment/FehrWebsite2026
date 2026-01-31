@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
         user: "terence.fehr@gmail.com",
-        pass: "chms bxhx wxgr ksoy"
+        pass: "gxfb zrqu kbna zwpf"
     }
 });
 
@@ -47,6 +47,9 @@ ${message}
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+
+
 
 
 
