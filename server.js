@@ -20,14 +20,14 @@ app.post("/contact", async (req, res) => {
     });
 
     res.json({ message: "Message sent successfully" });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "Failed to send message" });
-  }
+    } catch (err) {
+  console.error("RESEND ERROR:", err);
+  res.status(500).json({ message: "Failed to send message" });
+}
+
 });
 
-app.listen(3000, () => console.log("Server running"));;
-
+app.listen(3000, () => console.log("Server running"));
 
 
 
