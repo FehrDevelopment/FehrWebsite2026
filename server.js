@@ -24,7 +24,8 @@ app.post("/contact", async (req, res) => {
     console.log("received:", req.body);
 
     const mailOptions = {
-        from: email,
+        from: "terence.fehr@gmail.com",
+        replyTo: email,
         to: "terence.fehr@gmail.com",
         subject: "New Project Inquiry",
         text: `
@@ -47,6 +48,10 @@ ${message}
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+
+
+
 
 
 
