@@ -1,29 +1,22 @@
 import express from "express";
-import nodemailer from "nodemailer";
 import cors from "cors";
+import { Resend } from "resend";
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
+const resend = new Resend(process.env.RESEND_API_KEY);
+
 app.post("/contact", async (req, res) => {
   const { name, email, message } = req.body;
 
   try {
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-      }
-    });
-
-    await transporter.sendMail({
-      from: email,
+    await resend.emails.send({
+      from: "Fehr Development <onboarding@resend.dev>",
       to: process.env.EMAIL_USER,
       subject: `New message from ${name}`,
-      text: message,
-      replyTo: email
+      text: `Email: ${email}\n\nMessage:\n${message}`
     });
 
     res.json({ message: "Message sent successfully" });
@@ -33,7 +26,7 @@ app.post("/contact", async (req, res) => {
   }
 });
 
-app.listen(3000, () => console.log("Server running"));
+app.listen(3000, () => console.log("Server running"));;
 
 
 
