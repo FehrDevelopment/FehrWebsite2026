@@ -1,53 +1,39 @@
-const express = require("express");
-const nodemailer = require("nodemailer");
-const cors = require("cors");
+import express from "express";
+import nodemailer from "nodemailer";
+import cors from "cors";
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
-app.use(cors({
-    origin: "https://fehrdevelopment.com"
-}));
-
-// Gmail transporter
-const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-        user: "terence.fehr@gmail.com",
-        pass: "gxfb zrqu kbna zwpf"
-    }
-});
-
 app.post("/contact", async (req, res) => {
-    const { name, email, business, message } = req.body;
+  const { name, email, message } = req.body;
 
-    console.log("received:", req.body);
+  try {
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+      }
+    });
 
-    const mailOptions = {
-        from: "terence.fehr@gmail.com",
-        replyTo: email,
-        to: "terence.fehr@gmail.com",
-        subject: "New Project Inquiry",
-        text: `
-Name: ${name}
-Email: ${email}
-Business: ${business}
-Message:
-${message}
-        `
-    };
+    await transporter.sendMail({
+      from: email,
+      to: process.env.EMAIL_USER,
+      subject: `New message from ${name}`,
+      text: message,
+      replyTo: email
+    });
 
-    try {
-        await transporter.sendMail(mailOptions);
-        res.json({ success: true });
-    } catch (error) {
-        console.error(error);
-        res.json({ success: false });
-    }
+    res.json({ message: "Message sent successfully" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Failed to send message" });
+  }
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(3000, () => console.log("Server running"));
 
 
 
