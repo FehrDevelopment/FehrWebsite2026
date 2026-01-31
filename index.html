@@ -205,11 +205,10 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
     const data = await res.json();
 
     if (res.ok) {
-      alert("Message sent successfully!");
-      form.reset();
-    } else {
-      alert(data.message || "Failed to send message.");
-    }
+  alert("Message sent successfully!");
+  form.reset(); // clears the form fields
+}
+
   })
   .catch(() => {
     alert("Network error — please try again.");
