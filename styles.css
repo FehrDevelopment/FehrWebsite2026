@@ -74,6 +74,12 @@ body {
   font-size: 0.95rem;
   cursor: pointer;
   text-decoration: none;
+
+}
+.btn:hover {
+  transform: scale(1.03);
+  transition: transform 0.3s ease;
+  background-color: rgb(119, 21, 119);
 }
 
 .btn-primary {
@@ -134,6 +140,7 @@ body {
   background: #ffffff; /* deep forest tone */
   color: #00090e;
    filter: drop-shadow(0 0 10px rgba(1, 9, 5, 0.679));       /* soft snow white */
+
    
 }
 
@@ -146,13 +153,12 @@ body {
   color: #000000; /* lake turquoise accent */
 }
 
-.section-intro {
-  color: #4212f0; /* misty sky blue */
-}
+
 #portfolio {
   background: #f4f8f9; /* glacier grey */
   color: #2F3A3C; 
     filter: drop-shadow(0 0 10px rgba(1, 10, 20, 0.679));
+    padding-bottom: 30px;
 }
 
 #portfolio .card {
@@ -202,6 +208,8 @@ background: linear-gradient(to right, #b6bfe1, #d9d9e3); /* clean white card for
   border-radius: var(--radius);
   padding: 1.5rem;
   border: 1px solid rgba(255, 255, 255, 0.06);
+  animation: pulse 3s ease-in-out;
+  animation: glow 3s ease-in-out infinite;
 }
 
 .card h3 {
@@ -231,10 +239,12 @@ background: linear-gradient(to right, #b6bfe1, #d9d9e3); /* clean white card for
   border-radius: var(--radius);
   padding: 1.5rem;
   border: 1px solid rgba(255, 255, 255, 0.06);
+  animation: glow 3s ease-in-out infinite;
 }
 .hero {
   background: url('images/background\ pic\ 3jpg.jpg') center/cover no-repeat;
   color: rgba(240, 242, 245, 0.973);
+  height: 600px;
 }
 .hero p {
   color: rgba(245, 239, 239, 0.87);
@@ -301,6 +311,36 @@ textarea:focus {
   
 }
 
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px var(--accent);
+  }
+  50% {
+    box-shadow: 0 0 15px var(--accent);
+  }
+}
+
+
 
 /* Responsive */
 @media (max-width: 800px) {
@@ -360,5 +400,7 @@ textarea:focus {
   }
 
 }
+
+
 
 
