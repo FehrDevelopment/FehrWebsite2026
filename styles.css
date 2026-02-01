@@ -244,7 +244,7 @@ background: linear-gradient(to right, #b6bfe1, #d9d9e3); /* clean white card for
 .hero {
   background: url('images/background\ pic\ 3jpg.jpg') center/cover no-repeat;
   color: rgba(240, 242, 245, 0.973);
-  height: 600px;
+
 }
 .hero p {
   color: rgba(245, 239, 239, 0.87);
