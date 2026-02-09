@@ -13,7 +13,7 @@ app.post("/contact", async (req, res) => {
 
   try {
     await resend.emails.send({
-      from: "Fehr Development <onboarding@resend.dev>",
+      from:"Fehr Development <contact@fehrdevelopment.com>",
       to: process.env.EMAIL_USER,
       subject: `New message from ${name}`,
       text: `Email: ${email}\n\nMessage:\n${message}`
