@@ -13,7 +13,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Serve static files from the project root
-app.use(express.static(__dirname));
+app.use(express.static(path.join(process.cwd())));
+
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -42,7 +43,6 @@ app.get("*", (req, res) => {
 });
 
 app.listen(3000, () => console.log("Server running"));
-
 
 
 
