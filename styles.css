@@ -152,7 +152,7 @@ body {
 }
 
 #services .price {
-  color: #000000; /* lake turquoise accent */
+  color: white; /* lake turquoise accent */
 }
 
 
@@ -455,10 +455,13 @@ textarea:focus {
   box-shadow: 0 20px 50px rgba(0, 140, 255, 0.35);
 }
 /* Make Services titles blue */
+#services .service-card:active h3,
+#portfolio .service-card:active h3 {
+  color: var(--accent);
+}
 #services .service-card h3 {
   color: var(--accent);
 }
-
 
 /* PORTFOLIO — ANIMATED CARDS */
 #portfolio {
@@ -473,6 +476,10 @@ textarea:focus {
   gap: 2rem;
   perspective: 1000px;
 }
+#portfolio .portfolio-card:active h3 {
+  color: var(--accent);
+}
+
 
 /* CARD BASE */
 .portfolio-card {
@@ -638,7 +645,6 @@ textarea:focus {
     box-shadow: none;
   }
 }
-
 
 
 
