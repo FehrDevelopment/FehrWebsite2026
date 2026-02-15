@@ -383,34 +383,26 @@ input:focus,
 textarea:focus {
   outline: 1px solid var(--accent);
 }
-
+/* Base footer styling (optional if you already have this) */
 .site-footer {
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 1.5rem;;
-  font-size: 0.85rem;
-  color: var(--muted);
   text-align: center;
-  
-  
-  
-  
+  padding: 40px 20px;
+  background: #0a0a0a;
+  color: #fff;
 }
 
 .footer-inner {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 3rem;
-  
-  
+  align-items: center;
+  gap: 20px;
 }
-.footer-inner .logo {
-  margin: 1rem;
-  height: 10px;
+
+.footer-inner .logo-img {
+  width: 120px;
+  height: auto;
 }
-.footer-inner .logo img {
-  height: 66px;
-}
+
 /* SERVICES — ANIMATED CARDS */
 #services {
   background: radial-gradient(circle at top, #0d1224 0%, #05060a 100%);
@@ -434,11 +426,11 @@ textarea:focus {
   backdrop-filter: blur(6px);
   transition: transform 0.35s ease, box-shadow 0.35s ease;
   overflow: hidden;
-  animation: floatCard 6s ease-in-out infinite;
+
 }
 .services-title {
   font-size: 3rem;
-  color: #4da3ff; /* your brand blue */
+  color: #ffffff; /* your brand blue */
   position: relative;
   overflow: hidden;
   display: inline-block;
@@ -457,7 +449,7 @@ textarea:focus {
     rgba(255, 255, 255, 0.6) 50%,
     transparent 100%
   );
-  animation: shine 2.5s infinite;
+
 }
 
 @keyframes shine {
@@ -467,16 +459,9 @@ textarea:focus {
 
 
 /* FLOAT ANIMATION */
-@keyframes floatCard {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-35px); }
-  100% { transform: translateY(0px); }
-}
+
 
 /* STAGGERED FLOATING */
-.service-card:nth-child(1) { animation-delay: 0s; }
-.service-card:nth-child(2) { animation-delay: 1s; }
-.service-card:nth-child(3) { animation-delay: 2s; }
 
 /* HOVER EFFECT */
 .service-card:hover {
@@ -519,20 +504,11 @@ textarea:focus {
   backdrop-filter: blur(6px);
   transition: transform 0.35s ease, box-shadow 0.35s ease;
   overflow: hidden;
-  animation: floatPortfolio 7s ease-in-out infinite;
+
 }
 
 /* FLOAT ANIMATION */
-@keyframes floatPortfolio {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-35px); }
-  100% { transform: translateY(0px); }
-}
 
-/* STAGGERED FLOATING */
-.portfolio-card:nth-child(1) { animation-delay: 0s; }
-.portfolio-card:nth-child(2) { animation-delay: 1s; }
-.portfolio-card:nth-child(3) { animation-delay: 2s; }
 
 /* HOVER EFFECT */
 .portfolio-card:hover {
@@ -594,7 +570,21 @@ textarea:focus {
   .portfolio-grid {
     grid-template-columns: 1fr;
   }
-
+  .footer-inner {
+    flex-direction: column;
+    text-align:center;
+     
+  }
+  .footer-inner p {
+    margin-bottom: 10px;
+  }
+  .footer-inner .logo-img {
+    width: 100px;
+  }
+  .site-footer p {
+    font-size: 0.9rem;
+    line-height:1.4;
+  }
   .section-light {
     background-position: center;
     background-size: cover;
@@ -667,4 +657,18 @@ textarea:focus {
   }
 }
 
+@media (max-width: 480px) {
+  .footer-inner .logo-img {
+    width: 80px;
+  }
+  .site-footer {
+    padding: 30px 15px;
+  }
+   .site-footer p {
+    font-size: 0.8rem;
+  }
 
+  .services-title {
+    font-size: 2.5rem;
+  }
+}
