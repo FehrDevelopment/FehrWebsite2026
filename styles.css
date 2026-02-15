@@ -636,16 +636,6 @@ textarea:focus {
     padding: 1rem 0;
     margin-top: 1.5rem;
   }
-    .portfolio-card {
-    animation: none;
-    transform: none;
-  }
-  .portfolio-card:hover {
-    transform: none;
-    box-shadow: none;
-  }
 }
-
-
 
 
