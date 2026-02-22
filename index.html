@@ -154,7 +154,7 @@
   <!-- Services -->
   <section id="services" class="section section-light">
     <div class="container">
-      <h2 class="services-title">Services</h2>
+      <h2 class="services-title animate-title">Services</h2>
       <p class="section-intro">
         Clear, simple packages designed for small businesses that need a professional online presence without the agency price tag.
       </p>
@@ -196,7 +196,7 @@
   <!-- Portfolio -->
   <section id="portfolio" class="section">
     <div class="container">
-      <h2 class="portfolio-title">Portfolio</h2>
+      <h2 class="portfolio-title animate-title">Portfolio</h2>
       <p class="section-intro">
         A selection of projects that show how I approach real-world problems with clean, maintainable code and thoughtful design.
       </p>
@@ -321,12 +321,13 @@ const observer = new IntersectionObserver((entries) => {
     }
   });
 }, {
-  threshold: 0.1
+  threshold: 0.15 // feels great on mobile
 });
 
-document.querySelectorAll('.animate-on-scroll').forEach(el => {
+document.querySelectorAll('.animate-on-scroll, .animate-title').forEach(el => {
   observer.observe(el);
 });
+
 
 </script>
 
@@ -409,3 +410,4 @@ document.querySelectorAll('.animate-on-scroll').forEach(el => {
   </script>
 </body>
 </html>
+
