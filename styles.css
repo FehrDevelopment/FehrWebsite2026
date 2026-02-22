@@ -1,3 +1,4 @@
+
 :root {
   --bg: #05060a;
   --bg-light: #0d1018;
@@ -142,6 +143,7 @@ body {
   background: #ffffff; /* deep forest tone */
   color: #00090e;
    filter: drop-shadow(0 0 10px rgba(1, 9, 5, 0.679));       /* soft snow white */
+   
 
    
 }
@@ -160,7 +162,7 @@ body {
   background: #f4f8f9; /* glacier grey */
   color: #2F3A3C; 
     filter: drop-shadow(0 0 10px rgba(1, 10, 20, 0.679));
-    padding-bottom: 30px;
+    padding-bottom: 10px;
 }
 
 #portfolio .card {
@@ -174,12 +176,16 @@ background: linear-gradient(to right, #b6bfe1, #d9d9e3); /* clean white card for
 }
 
 #portfolio .tech {
-  color: #000000; /* turquoise highlight */
-  font-weight: 500;
+  color: white;
+  font-weight: 200;
+  
+  
+
 }
 
 .section-intro {
-  color: #4a574b;
+  color: #ffffff;
+  
   
   
 }
@@ -348,6 +354,7 @@ background: linear-gradient(to right, #b6bfe1, #d9d9e3); /* clean white card for
 .logo-img {
   height: 40px;
   width: auto;
+  
 
 }
 
@@ -355,12 +362,37 @@ background: linear-gradient(to right, #b6bfe1, #d9d9e3); /* clean white card for
   margin-top: 2rem;
   max-width: 600px;
   
-  
 }
 
 .form-row {
   margin-bottom: 1rem;
 }
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 6px 0;
+}
+
+.contact-row p {
+  margin: 0;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+.contact-icon {
+  width: 22px;
+  height: 22px;
+  opacity: 0.9;
+  flex-shrink: 0;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.contact-icon:hover {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 6px rgba(0, 150, 255, 0.7));
+}
+
 
 label {
   display: block;
@@ -383,25 +415,100 @@ input:focus,
 textarea:focus {
   outline: 1px solid var(--accent);
 }
+
 /* Base footer styling (optional if you already have this) */
 .site-footer {
-  text-align: center;
-  padding: 40px 20px;
   background: #0a0a0a;
   color: #fff;
+  padding: 40px 20px;
 }
 
 .footer-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
+  gap: 30px;
 }
 
-.footer-inner .logo-img {
+.footer-center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: right;
+}
+
+.logo-img {
   width: 120px;
   height: auto;
+  margin-bottom: 8px;
 }
+
+.footer-slogan {
+  font-size: 0.9rem;
+  opacity: 0.85;
+  margin-bottom: 4px;
+}
+
+.footer-copy {
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+
+.footer-social {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.footer-social .social-icon svg {
+  width: 26px;
+  height: 26px;
+  opacity: 0.9;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.footer-social .social-icon:hover svg {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 6px rgba(0, 150, 255, 0.7));
+}
+
+
+/* Mobile: stack everything nicely */
+@media (max-width: 700px) {
+  .footer-inner {
+    flex-direction: column;
+  }
+
+  .footer-social {
+    justify-content: center;
+  }
+}
+.footer-contact {
+  color: #fff;
+  text-align: left;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-contact h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #0096ff; /* your neon blue */
+  font-weight: 600;
+}
+
+.footer-contact p {
+  margin: 4px 0;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+.footer-contact p span {
+  opacity: 1;
+}
+
+
 
 /* SERVICES — ANIMATED CARDS */
 #services {
@@ -434,6 +541,7 @@ textarea:focus {
   position: relative;
   overflow: hidden;
   display: inline-block;
+  animation: spacingReveal 1.5s ease-out forwards;
 }
 
 .services-title::after {
@@ -443,6 +551,7 @@ textarea:focus {
   left: -100%;
   width: 100%;
   height: 90%;
+  
   background: linear-gradient(
     120deg,
     transparent 0%,
@@ -456,6 +565,15 @@ textarea:focus {
   0% { left: -100%; }
   100% { left: 100%; }
 }
+@keyframes underlinegrow {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+@keyframes spacingReveal {
+  0% { letter-spacing: -0.5em; opacity: 0; }
+  100% { letter-spacing: normal; opacity: 1; }
+}
+
 
 
 /* FLOAT ANIMATION */
@@ -493,7 +611,14 @@ textarea:focus {
 #portfolio .portfolio-card:active h3 {
   color: var(--accent);
 }
-
+.portfolio-title {
+  font-size: 3rem;
+  color: #ffffff; /* your brand blue */
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  animation: spacingReveal 1.5s ease-out forwards;
+}
 
 /* CARD BASE */
 .portfolio-card {
@@ -573,7 +698,10 @@ textarea:focus {
   .footer-inner {
     flex-direction: column;
     text-align:center;
-     
+  }
+
+  .footer-social {
+    justify-content: center;
   }
   .footer-inner p {
     margin-bottom: 10px;
