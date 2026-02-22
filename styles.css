@@ -42,7 +42,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 0;
+  padding: 0.75rem;
 }
 
 .logo span {
@@ -60,22 +60,24 @@ body {
   text-decoration: none;
   color: var(--muted);
   font-size: 0.95rem;
+
 }
 
 .main-nav a:hover {
-  color: var(--text);
+  color: var(--accent);
 }
 
 .btn {
   display: inline-block;
   padding: 0.6rem 1.2rem;
-  border-radius: 999px;
+  border-radius: 99px;
   border: 1px solid transparent;
   font-size: 0.95rem;
   cursor: pointer;
   text-decoration: none;
 
 }
+
 .btn:hover {
   transform: scale(1.03);
   transition: transform 0.3s ease;
@@ -540,7 +542,7 @@ textarea:focus {
   position: relative;
   overflow: hidden;
   display: inline-block;
-  animation: spacingReveal 1.5s ease-out forwards;
+  animation: spacingReveal 4s ease-out forwards;
 }
 
 .services-title::after {
@@ -559,6 +561,17 @@ textarea:focus {
   );
 
 }
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+
+.animate-on-scroll.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 @keyframes shine {
   0% { left: -100%; }
