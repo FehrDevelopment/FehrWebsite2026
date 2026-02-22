@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -160,7 +159,7 @@
         Clear, simple packages designed for small businesses that need a professional online presence without the agency price tag.
       </p>
       <div class="cards-grid">
-        <article class="service-card">
+        <article class="service-card animate-on-scroll">
           <h3>Starter Website</h3>
           <p class="price">From $499</p>
           <ul>
@@ -170,7 +169,7 @@
             <li>Basic SEO setup</li>
           </ul>
         </article>
-        <article class="service-card">
+        <article class="service-card animate-on-scroll">
           <h3>Business Website</h3>
           <p class="price">From $999</p>
           <ul>
@@ -180,7 +179,7 @@
             <li>Analytics & SEO setup</li>
           </ul>
         </article>
-        <article class="service-card">
+        <article class="service-card animate-on-scroll">
           <h3>Website Tune-Up</h3>
           <p class="price">From $199</p>
           <ul>
@@ -202,17 +201,17 @@
         A selection of projects that show how I approach real-world problems with clean, maintainable code and thoughtful design.
       </p>
       <div class="cards-grid portfolio-grid">
-        <article class="portfolio-card">
+        <article class="portfolio-card animate-on-scroll">
           <h3>Small Business Website</h3>
           <p>Responsive marketing site for a local contractor, focused on clarity, trust, and easy contact.</p>
           <p class="tech">HTML • CSS • JavaScript • .NET • SQL</p>
         </article>
-        <article class="portfolio-card">
+        <article class="portfolio-card animate-on-scroll">
           <h3>Booking & Scheduling App</h3>
           <p>Full-stack app with authentication, bookings, and admin dashboard for managing appointments.</p>
           <p class="tech">React • REST API • C# • SQL</p>
         </article>
-        <article class="portfolio-card">
+        <article class="portfolio-card animate-on-scroll">
           <h3>Dashboard & Analytics</h3>
           <p>Custom dashboard for tracking key metrics with charts, filters, and role-based access.</p>
           <p class="tech">JavaScript • ASP.NET • Charting library</p>
@@ -315,6 +314,20 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
   const result = await res.json();
   alert(result.message);
 });
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
+  });
+}, {
+  threshold: 0.2
+});
+
+document.querySelectorAll('.animate-on-scroll').forEach(el => {
+  observer.observe(el);
+});
+
 </script>
 
 
