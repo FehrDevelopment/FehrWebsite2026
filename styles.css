@@ -18,7 +18,7 @@
 body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: radial-gradient(circle at top, #151a2b, #05060a);
+  background: radial-gradient(circle at top, #5a7cea, #05060a);
   color: var(--text);
   overflow-x: hidden;
 }
@@ -34,7 +34,7 @@ body {
   top: 0;
   z-index: 10;
   backdrop-filter: blur(12px);
-  background: rgba(5, 6, 10, 0.85);
+  background: rgb(0, 0, 0);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -137,19 +137,22 @@ body {
 
 .section {
   padding: 2rem 0;
+  background: #090211; /* deep forest tone */
   
 }
 
 #services {
   background: #ffffff; /* deep forest tone */
   color: #00090e;
-   filter: drop-shadow(0 0 10px rgba(1, 9, 5, 0.679));       /* soft snow white */
+   filter: drop-shadow(0 0 10px rgba(1, 9, 5, 0.679)); 
+         /* soft snow white */
    
 
    
 }
 
 #services .card {
+  color: white;
  background: linear-gradient(to right, #b6bfe1, #d9d9e3); /* mountain shadow tone */
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -164,6 +167,7 @@ body {
   color: #2F3A3C; 
     filter: drop-shadow(0 0 10px rgba(1, 10, 20, 0.679));
     padding-bottom: 10px;
+    
 }
 
 #portfolio .card {
@@ -186,15 +190,35 @@ background: linear-gradient(to right, #b6bfe1, #d9d9e3); /* clean white card for
 
 .section-intro {
   color: #ffffff;
-  
-  
+    border-left: 3px solid #a855f7; /* neon purple */
+    padding-left: 1rem;
+    margin: 1rem 0 2rem;
+    color: #e5e5e5;
+    font-size: 1.1rem;
+    line-height: 1.6;
+
   
 }
 
 
+.neon-border {
+    border-left: 8px solid #a855f7; /* neon purple */
+    padding-left: 1rem;
+}
+
+.glow-soft {
+    text-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+}
+.glow-soft {
+    background: rgba(168, 85, 247, 0.05);
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.25);
+    border-radius: 8px;
+    padding: 1.2rem 1.5rem;
+}
+
 
 .section-light {
-    background: url("images/background pic 3jpg.jpg") center/cover no-repeat;
+    background: url("images/purple-background-24.webp") center/cover no-repeat;
     width: 100%;
     padding: 4rem 0;
 }
@@ -202,6 +226,7 @@ background: linear-gradient(to right, #b6bfe1, #d9d9e3); /* clean white card for
 .section h2 {
   font-size: 3rem;
   margin-bottom: 0.5rem;
+  
 }
 
 .section-intro {
@@ -260,11 +285,10 @@ background: linear-gradient(to right, #b6bfe1, #d9d9e3); /* clean white card for
   animation: glow 3s ease-in-out infinite;
 }
 .hero {
-  background: url('images/background\ pic\ 3jpg.jpg') center/cover no-repeat;
+  background: url('images/purple-background-21.webp') center/cover no-repeat;
   color: rgba(240, 242, 245, 0.973);
-  
-
 }
+
 .hero p {
   color: rgba(245, 239, 239, 0.87);
 }
@@ -362,6 +386,8 @@ background: linear-gradient(to right, #b6bfe1, #d9d9e3); /* clean white card for
 .contact-form {
   margin-top: 2rem;
   max-width: 600px;
+  
+  
   
 }
 
@@ -525,6 +551,7 @@ textarea:focus {
   perspective: 1000px;
 }
 
+
 /* CARD BASE */
 .service-card {
   position: relative;
@@ -574,7 +601,7 @@ textarea:focus {
 .animate-title {
   opacity: 0;
   transform: translateY(20px);
-  transition: all 0.7s ease-out;
+  transition: all 2s ease-out;
 }
 
 .animate-title.show {
@@ -640,7 +667,7 @@ textarea:focus {
   position: relative;
   overflow: hidden;
   display: inline-block;
-  animation: spacingReveal 1.5s ease-out forwards;
+  animation: spacingReveal 4s ease-out forwards;
 }
 
 /* CARD BASE */
@@ -780,7 +807,7 @@ textarea:focus {
   }
 
   .main-nav a {
-    padding: 0.5rem 0.75rem;
+    padding: 0.5rem .95rem;
   }
 
   .contact-form {
