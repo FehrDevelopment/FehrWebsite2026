@@ -74,23 +74,43 @@
 </head>
 <body>
   <!-- Header / Nav -->
-  <header class="site-header">
-    <div class="container header-inner">
-        <div class="logo">
-  <img src="images/transparent-logo1.png" alt="" class="logo-img" />
-  <span class="fade-towards-screen">
-  Fehr<span>Development</span>
-</span>
-</div>
+<header class="site-header">
+  <div class="header-inner container">
 
-      <nav class="main-nav">
-        <a href="#services">Services</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#about">About</a>
-        <a href="#contact" class="btn btn-primary">Get a Quote</a>
-      </nav>
+    <!-- LEFT: Hamburger -->
+    <button class="hamburger" id="hamburgerBtn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- CENTER: Slogan -->
+    <div class="slogan-line">
+      <span class="slogan-word w1">Your Design,</span>
+      <span class="slogan-word w2">Our Code,</span>
+      <span class="slogan-word w3">Your Future.</span>
     </div>
-  </header>
+
+    <!-- RIGHT: Header Logo (static, never animated) -->
+    <div class="logo header-logo">
+      <img src="images/transparent-logo1.png" class="logo-img" alt="Fehr Development">
+    </div>
+
+    <!-- DROPDOWN -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#about">About</a>
+      
+    </div>
+
+  </div>
+</header>
+
+
+
+
+
 
   <!-- Hero -->
   <section class="hero">
@@ -331,14 +351,43 @@ document.querySelectorAll('.animate-on-scroll, .animate-title').forEach(el => {
   observer.observe(el);
 });
 
+  const btn = document.getElementById('hamburgerBtn');
+  const menu = document.getElementById('mobileMenu');
+
+  btn.addEventListener('click', () => {
+    btn.classList.toggle('active');
+    menu.classList.toggle('show');
+  });
+  
+  // fire after slogan vanish finishes (3.2s + 1s ≈ 4.2s)
+  setTimeout(() => {
+    const logo = document.querySelector('.logo');
+    if (logo) logo.classList.add('reveal');
+  }, 4200);
+// Reveal on scroll
+const reveals = document.querySelectorAll('.reveal');
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, {
+  threshold: 0.2
+});
+
+reveals.forEach(el => revealObserver.observe(el));
+
 
 </script>
 
 
 
     </div>
-
   </section>
+  
+  
   <hr>
 
   
@@ -376,7 +425,7 @@ document.querySelectorAll('.animate-on-scroll, .animate-title').forEach(el => {
 
     <!-- CENTER COLUMN -->
     <div class="footer-center">
-      <div class="logo">
+      <div class="footer-logo">
         <img src="images/transparent-logo1.png" alt="Fehr Development Logo" class="logo-img" />
       </div>
 
