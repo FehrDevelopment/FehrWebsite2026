@@ -715,6 +715,25 @@ body {
   color: #ffffff;
   text-shadow: 0 0 12px #3fa9ff, 0 0 24px #3fa9ff;
 }
+.expect-list {
+  display: block;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  width: 100%;
+}
+.expect-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 10px 0;
+  font-size: 1.1rem;
+  line-height: 1.4;
+  color: #ffffff;
+  text-align: left;
+}
+
+
 /* Keep the container the same height before and after animation */
 .slideshow-card {
   width: 50%;
@@ -763,8 +782,15 @@ body {
   }
 
   .slideshow-card {
-    padding: 28px 16px;
+    padding: 10px;
     width: 90%;
+  }
+  .expect-list li {
+    font-size: 1rem;
+    line-height: 1.4;
+    display: flex;
+    gap: 6px;
+    align-items: center;
   }
 
   .expectation-slideshow.cinematic {
@@ -779,6 +805,25 @@ body {
     font-size: 1rem;
   }
 }
+
+@media (max-width: 400px) {
+  .expect-list li {
+    display: grid;
+    grid-template-columns: auto 1fr; /* icon + text */
+    column-gap: 6px;                 /* tight spacing */
+    row-gap: 4px;
+    align-items: start;
+    font-size: 0.95rem;
+    line-height: 1.3;
+  }
+
+  .expect-list .icon {
+    font-size: 1.1rem;
+    margin-top: 2px; /* aligns icon with first line */
+  }
+}
+
+
 
 
 
