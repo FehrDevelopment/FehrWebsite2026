@@ -5,44 +5,86 @@ import { fileURLToPath } from "url";
 import { Resend } from "resend";
 
 const app = express();
-app.use(cors());
+
+// --------------------------------------------------
+// 1. JSON MUST COME FIRST (fixes blank emails on Render)
+// --------------------------------------------------
 app.use(express.json());
 
-// Fix __dirname for ES modules
+// --------------------------------------------------
+// 2. Correct CORS for both local + live site
+// --------------------------------------------------
+app.use(cors({
+  origin: [
+    "https://fehrdevelopment.com",
+    "http://127.0.0.1:5500"
+  ],
+  methods: ["POST", "GET"],
+  allowedHeaders: ["Content-Type"]
+}));
+
+// --------------------------------------------------
+// 3. Fix __dirname for ES modules
+// --------------------------------------------------
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Serve static files from the project root
+// --------------------------------------------------
+// 4. Serve static files (AFTER JSON + CORS)
+// --------------------------------------------------
 app.use(express.static(path.join(process.cwd())));
 
-
+// --------------------------------------------------
+// 5. Resend setup
+// --------------------------------------------------
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-// Contact form route
+// --------------------------------------------------
+// 6. Contact form route (FULLY FIXED)
+// --------------------------------------------------
 app.post("/contact", async (req, res) => {
-  const { name, email, message } = req.body;
+  const { name, email, business, message } = req.body;
+
+  // Validate required fields
+  if (!name || !email || !message) {
+    return res.status(400).json({ message: "Missing required fields" });
+  }
 
   try {
     await resend.emails.send({
       from: "Fehr Development <contact@fehrdevelopment.com>",
       to: process.env.EMAIL_USER,
       subject: `New message from ${name}`,
-      text: `Email: ${email}\n\nMessage:\n${message}`
+      text: `
+Name: ${name}
+Email: ${email}
+Business: ${business || "N/A"}
+
+Message:
+${message}
+      `
     });
 
-    res.json({ message: "Message sent successfully" });
+    return res.json({ message: "Message sent successfully" });
+
   } catch (err) {
     console.error("RESEND ERROR:", err);
-    res.status(200).json({ message: "Message sent successfully" });
+    return res.status(500).json({ message: "Email failed to send" });
   }
 });
 
-// Fallback route for index.html
+// --------------------------------------------------
+// 7. Fallback route for SPA
+// --------------------------------------------------
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
-app.listen(3000, () => console.log("Server running"));
+// --------------------------------------------------
+// 8. Start server
+// --------------------------------------------------
+app.listen(3000, () => console.log("Server running on port 3000"));
+
 
 
 
