@@ -351,6 +351,8 @@
 
 
 
+
+
   <section id="contact">
 
 
@@ -401,53 +403,59 @@
 
 
 <script>
-
-
-document.getElementById("contactForm").addEventListener("submit", function(e) {
-  e.preventDefault(); // stop page reload
-
-  const status = document.getElementById("formStatus");
-  status.textContent = "Message sent!";
-  status.style.color = "#3fa9ff";
-
-  // Reset the form fields
-  this.reset();
-});
-
-
-
 document.getElementById("contactForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const formData = new FormData(e.target);
+  const form = e.target;
+  const status = document.getElementById("formStatus");
+
   const data = {
-  name: document.getElementById("name").value,
-  email: document.getElementById("email").value,
-  message: document.getElementById("message").value
-};
+    name: document.getElementById("name").value.trim(),
+    email: document.getElementById("email").value.trim(),
+    business: document.getElementById("business").value.trim(),
+    message: document.getElementById("message").value.trim()
+  };
 
+  console.log("Sending data:", data);
 
-  const res = await fetch("https://fehrwebsite2026.onrender.com/contact", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify(data)
+  try {
+    const res = await fetch("https://fehrwebsite2026.onrender.com/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
 
-})
-  .then(async (res) => {
-    const data = await res.json();
+    let result;
+    try {
+      result = await res.json();
+    } catch {
+      result = await res.text();
+    }
+
+    console.log("Server response:", result);
 
     if (res.ok) {
-  alert("Message sent successfully!");
-  form.reset(); // clears the form fields
-}
+      status.textContent = "Message sent!";
+      status.style.color = "#3fa9ff";
+      form.reset();
+    } else {
+      status.textContent = "Something went wrong.";
+      status.style.color = "red";
+    }
 
-  })
-
-
-
-  const result = await res.json();
-  alert(result.message);
+  } catch (err) {
+    console.error("Network error:", err);
+    status.textContent = "Network error.";
+    status.style.color = "red";
+  }
 });
+</script>
+
+
+// ----------------------
+// Your existing animations
+// ----------------------
+
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -455,27 +463,26 @@ const observer = new IntersectionObserver((entries) => {
     }
   });
 }, {
-  threshold: 0.15 // feels great on mobile
+  threshold: 0.15
 });
 
 document.querySelectorAll('.animate-on-scroll, .animate-title').forEach(el => {
   observer.observe(el);
 });
 
-  const btn = document.getElementById('hamburgerBtn');
-  const menu = document.getElementById('mobileMenu');
+const btn = document.getElementById('hamburgerBtn');
+const menu = document.getElementById('mobileMenu');
 
-  btn.addEventListener('click', () => {
-    btn.classList.toggle('active');
-    menu.classList.toggle('show');
-  });
-  
-  // fire after slogan vanish finishes (3.2s + 1s ≈ 4.2s)
-  setTimeout(() => {
-    const logo = document.querySelector('.logo');
-    if (logo) logo.classList.add('reveal');
-  }, 4200);
-// Reveal on scroll
+btn.addEventListener('click', () => {
+  btn.classList.toggle('active');
+  menu.classList.toggle('show');
+});
+
+setTimeout(() => {
+  const logo = document.querySelector('.logo');
+  if (logo) logo.classList.add('reveal');
+}, 4200);
+
 const reveals = document.querySelectorAll('.reveal');
 
 const revealObserver = new IntersectionObserver((entries) => {
@@ -503,9 +510,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   sections.forEach(section => observer.observe(section));
 });
-
-
 </script>
+
+
 
 
 
@@ -616,4 +623,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </body>
 </html>
-
