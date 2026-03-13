@@ -7,12 +7,12 @@ import { Resend } from "resend";
 const app = express();
 
 // --------------------------------------------------
-// 1. JSON MUST COME FIRST (fixes blank emails on Render)
+// 1. JSON MUST COME FIRST
 // --------------------------------------------------
 app.use(express.json());
 
 // --------------------------------------------------
-// 2. Correct CORS for both local + live site
+// 2. CORS for live + local
 // --------------------------------------------------
 app.use(cors({
   origin: [
@@ -30,9 +30,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // --------------------------------------------------
-// 4. Serve static files (AFTER JSON + CORS)
+// 4. Serve STATIC FILES from the REAL website root
+//    (backend is inside /backend → go UP one folder)
 // --------------------------------------------------
-app.use(express.static(path.join(process.cwd())));
+const rootPath = path.join(__dirname, "..");
+app.use(express.static(rootPath));
 
 // --------------------------------------------------
 // 5. Resend setup
@@ -40,12 +42,11 @@ app.use(express.static(path.join(process.cwd())));
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 // --------------------------------------------------
-// 6. Contact form route (FULLY FIXED)
+// 6. Contact form route
 // --------------------------------------------------
 app.post("/contact", async (req, res) => {
   const { name, email, business, message } = req.body;
 
-  // Validate required fields
   if (!name || !email || !message) {
     return res.status(400).json({ message: "Missing required fields" });
   }
@@ -75,18 +76,17 @@ ${message}
 
 // --------------------------------------------------
 // 7. Fallback route for SPA
+//    (serve the REAL index.html in the root folder)
 // --------------------------------------------------
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"));
+  res.sendFile(path.join(rootPath, "index.html"));
 });
 
 // --------------------------------------------------
-// 8. Start server
+// 8. Start server (Render FIXED)
 // --------------------------------------------------
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
-
 
 
 
