@@ -33,7 +33,7 @@ const __dirname = path.dirname(__filename);
 // 4. Serve STATIC FILES from the REAL website root
 //    (backend is inside /backend → go UP one folder)
 // --------------------------------------------------
-const rootPath = path.join(__dirname, "..");
+const rootPath = __dirname;
 app.use(express.static(rootPath));
 
 // --------------------------------------------------
@@ -79,7 +79,8 @@ ${message}
 //    (serve the REAL index.html in the root folder)
 // --------------------------------------------------
 app.get("*", (req, res) => {
-  res.sendFile(path.join(rootPath, "index.html"));
+  res.sendFile(path.join(__dirname, "index.html"));
+
 });
 
 // --------------------------------------------------
@@ -87,10 +88,6 @@ app.get("*", (req, res) => {
 // --------------------------------------------------
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
-
-
-
 
 
 
